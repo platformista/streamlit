@@ -1,0 +1,56 @@
+# This file describes an application. You can have multiple applications
+# in the same project.
+#
+# See https://docs.platform.sh/user_guide/reference/platform-app-yaml.html
+
+# The name of this app. Must be unique within a project.
+name: app
+
+# The runtime the application uses.
+type: "python:3.8"
+
+# The build-time dependencies of the app.
+dependencies:
+    python3:
+       pipenv: "2018.10.13"
+
+# The hooks executed at various points in the lifecycle of the application.
+hooks:
+    build: |
+        set -e
+        pip install streamlit
+        bash scripts/install-conda.sh
+    deploy: |
+        set -e
+        . /app/conda/etc/profile.d/conda.sh
+        conda create --yes --name snowpark -c https://repo.anaconda.com/pkgs/snowflake python=3.8
+
+# The size of the persistent disk of the application (in MB).
+disk: 1024
+
+# The configuration of app when it is exposed to the web.
+web:
+    commands:
+        start: bash scripts/conda.sh
+    upstream:
+        socket_family: tcp
+        protocol: http
+    locations:
+        "/":
+            passthru: true
+
+mounts:
+    "/.cache":
+        source: local
+        source_path: cache
+
+    "/.conda":
+        source: local
+        source_path: conda
+
+source:
+  operations:
+    auto-update:
+      command: |
+        curl -fsS https://raw.githubusercontent.com/platformsh/source-operations/main/setup.sh | { bash /dev/fd/3 sop-autoupdate; } 3<&0
+
