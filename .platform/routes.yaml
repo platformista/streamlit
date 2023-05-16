@@ -1,3 +1,11 @@
 https://{default}/:
   type: upstream
   upstream: "app:http"
+  cache:
+      enabled: false
+
+#https://{default}/ws:
+#    type: upstream
+#    upstream: "ws-app:http"
+#    cache:
+#        enabled: false

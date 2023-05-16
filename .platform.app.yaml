@@ -18,12 +18,22 @@ dependencies:
 hooks:
     build: |
         set -e
-        pip install streamlit
+        pip install streamlit==1.21.0
+        pip uninstall requests -y
+        pip uninstall urllib3 -y
+        pip uninstall pyarrow -y
+        pip install requests==2.29.0
+        pip install urllib3==1.26.15
+        pip install pyarrow==10.0.1
+        pip install snowflake-snowpark-python
+        pip install snowflake-connector-python
         bash scripts/install-conda.sh
+        . /app/conda/etc/profile.d/conda.sh
+
     deploy: |
         set -e
         . /app/conda/etc/profile.d/conda.sh
-        conda create --yes --name snowpark -c https://repo.anaconda.com/pkgs/snowflake python=3.8
+         conda create --yes --name snowpark -c https://repo.anaconda.com/pkgs/snowflake python=3.8
 
 # The size of the persistent disk of the application (in MB).
 disk: 1024
@@ -38,6 +48,8 @@ web:
     locations:
         "/":
             passthru: true
+            request_buffering:
+                enabled: false
 
 mounts:
     "/.cache":
