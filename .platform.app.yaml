@@ -9,6 +9,13 @@ name: app
 # The runtime the application uses.
 type: "python:3.8"
 
+variables:
+    env:
+        SNOW_ROLE: 'ACCOUNTADMIN'
+        COMPUTE_WH: 'COMPUTE_WH'
+        SNOW_DATABASE: 'ENVIRONMENT_DATA_ATLAS'
+        SNOW_SCHEMA: 'ENVIRONMENT'
+
 # The build-time dependencies of the app.
 dependencies:
     python3:
