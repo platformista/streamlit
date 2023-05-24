@@ -40,10 +40,9 @@ connection_parameters = {
 - To set `SNOW_USER` get the `username` from your Snowflake profile
 - To set `SNOW_PASSWORD` use your account's password
 
-Then
+These variables can be set using [the platform.sh CLI or the Web Console](https://docs.platform.sh/development/variables/set-variables.html#create-project-variables). 
 
-- `SNOW_ROLE = ACCOUNTADMIN`
-- `COMPUTE_WH`
+The remainder of the environment variables is set in code (in the `.platform.app.yaml`) as they currently hold non-sensitive data. 
 
 ## References
 
