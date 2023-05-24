@@ -1,12 +1,13 @@
 <p align="center">
-<a href="https://console.platform.sh/projects/create-project?template=https://raw.githubusercontent.com/platformista/streamlit/main/.platform.template.yaml&utm_content=python3&utm_source=github&utm_medium=button&utm_campaign=deploy_on_platform">
+<a href="https://console.platform.sh/projects/create-project/?template=https://github.com/platformista/streamlit/blob/main/template-definition.yaml&utm_campaign=deploy_on_platform?utm_medium=button&utm_source=affiliate_links&utm_content=https://github.com/platformista/streamlit/blob/main/template-definition.yaml">
     <img src="https://platform.sh/images/deploy/lg-blue.svg" alt="Deploy on Platform.sh" width="180px" />
 </a>
+
 </p>
 
 # Snowpark and Streamlit by Snowflake
 
-This template provides the most basic configuration for [getting started with snowpark for Python and streamlit](https://quickstarts.snowflake.com/guide/getting_started_with_snowpark_for_python_streamlit/index.html?index=..%2F..index#3) on Platform.sh. 
+This template provides the most basic configuration for [getting started with snowpark for Python and streamlit](https://quickstarts.snowflake.com/guide/getting_started_with_snowpark_for_python_streamlit/index.html?index=..%2F..index#3) on Platform.sh.
 
 ## Features
 
@@ -21,8 +22,8 @@ The following files are of particular importance.  If using this project as a re
 
 ## Configure your environment
 
-Once you deployed a new platform.sh project out of this template, you will need to set up some environment variables for it work correctly. 
-They are being used in [this piece of code](/snowpark_streamlit_app.py#LL20C4-L28C5): 
+Once you deployed a new platform.sh project out of this template, you will need to set up some environment variables for it work correctly.
+They are being used in [this piece of code](/snowpark_streamlit_app.py#LL20C4-L28C5):
 
 ```python
 connection_parameters = {
@@ -40,9 +41,9 @@ connection_parameters = {
 - To set `SNOW_USER` get the `username` from your Snowflake profile
 - To set `SNOW_PASSWORD` use your account's password
 
-These variables can be set using [the platform.sh CLI or the Web Console](https://docs.platform.sh/development/variables/set-variables.html#create-project-variables). 
+These variables can be set using [the platform.sh CLI or the Web Console](https://docs.platform.sh/development/variables/set-variables.html#create-project-variables).
 
-The remainder of the environment variables is set in code (in the `.platform.app.yaml`) as they currently hold non-sensitive data. 
+The remainder of the environment variables is set in code (in the `.platform.app.yaml`) as they currently hold non-sensitive data.
 
 ## References
 
