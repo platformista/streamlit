@@ -3,6 +3,7 @@ from snowflake.snowpark.session import Session
 from snowflake.snowpark.functions import avg, sum, col,lit
 import streamlit as st
 import pandas as pd
+import os
 
 st.set_page_config(
      page_title="Environment Data Atlas",
@@ -17,13 +18,13 @@ st.set_page_config(
 
 def create_session_object():
    connection_parameters = {
-      "account": "dqkxgku-yx17303",
-      "user": "vinnie",
-      "password": "aHopsjFhvExZ7TEczLmfu32mMtwWNX",
-      "role": "ACCOUNTADMIN",
-      "warehouse": "COMPUTE_WH",
-      "database": "ENVIRONMENT_DATA_ATLAS",
-      "schema": "ENVIRONMENT"
+        "account": os.getenv("SNOW_ACCOUNT_ID"),
+        "user": os.getenv("SNOW_USER"),
+        "password": os.getenv("SNOW_PASSWORD"),
+        "role": os.getenv("SNOW_ROLE"),
+        "warehouse": os.getenv("COMPUTE_WH"),
+        "database": os.getenv("SNOW_DATABASE"),
+        "schema": os.getenv("SNOW_SCHEMA")
    }
    session = Session.builder.configs(connection_parameters).create()
    return session
