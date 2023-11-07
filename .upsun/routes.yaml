@@ -1,8 +1,9 @@
-https://{default}/:
-  type: upstream
-  upstream: "app:http"
-  cache:
-      enabled: false
+routes:
+    https://{default}/:
+      type: upstream
+      upstream: "app:http"
+      cache:
+          enabled: false
 
 #https://{default}/ws:
 #    type: upstream
